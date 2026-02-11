@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Lease Property Report</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: #f7f5f0;
+            color: #2d3748;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header with logo */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-bottom: 2px solid #d4edee;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: #8ecfd0;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2d3748;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            color: #5ba3a5;
+        }
+
+        .header-title {
+            text-align: right;
+        }
+
+        .header-title h1 {
+            font-size: 24px;
+            color: #2d3748;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .header-title .date {
+            color: #718096;
+            font-size: 14px;
+        }
+
+        /* Summary cards */
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: #d4edee;
+            border: 1px solid #b8d9da;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 4px solid #5ba3a5;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(91, 163, 165, 0.15);
+        }
+
+        .card-value {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #2d3748;
+        }
+
+        .card-label {
+            font-size: 14px;
+            color: #4a5568;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* Charts section */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 1000px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chart-container {
+            background: #ffffff;
+            border: 1px solid #d4edee;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            min-height: 350px;
+        }
+
+        .chart-title {
+            font-size: 16px;
+            color: #2d3748;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #8ecfd0;
+        }
+
+        /* Data table */
+        .table-container {
+            background: #ffffff;
+            border: 1px solid #d4edee;
+            border-radius: 12px;
+            padding: 20px;
+            overflow-x: auto;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .table-title {
+            font-size: 18px;
+            color: #2d3748;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #8ecfd0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #2d3748;
+            color: #ffffff;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+
+        th:last-child {
+            border-radius: 0 8px 0 0;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #2d3748;
+        }
+
+        tr:hover {
+            background-color: #f0fafa;
+        }
+
+        .occupancy-low { color: #c53030; font-weight: 600; }
+        .occupancy-mid { color: #b7791f; font-weight: 600; }
+        .occupancy-high { color: #276749; font-weight: 600; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #718096;
+            font-size: 12px;
+            border-top: 1px solid #d4edee;
+            margin-top: 30px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background-color: #f7f5f0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .card, .chart-container, .table-container {
+                break-inside: avoid;
+            }
+
+            .charts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header with Logo -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                        <path d="M12 16.17L5 12.43V17c0 2.21 3.13 4 7 4s7-1.79 7-4v-4.57l-7 3.74z"/>
+                    </svg>
+                </div>
+                <div class="logo-text">Thesis <span>Management</span></div>
+            </div>
+            <div class="header-title">
+                <h1>Pre-Lease Summary Report</h1>
+                <div class="date">Generated: {{ report_date }}</div>
+            </div>
+        </header>
+
+        <!-- Summary Cards -->
+        <section class="summary-cards">
+            <div class="card">
+                <div class="card-value">{{ total_units }}</div>
+                <div class="card-label">Total Units</div>
+            </div>
+            <div class="card">
+                <div class="card-value">{{ overall_occupancy }}%</div>
+                <div class="card-label">Overall Pre-Lease %</div>
+            </div>
+            <div class="card">
+                <div class="card-value">{{ total_available }}</div>
+                <div class="card-label">Projected Availability</div>
+            </div>
+            <div class="card">
+                <div class="card-value">{{ total_preleased }}</div>
+                <div class="card-label">Total Pre-Leased</div>
+            </div>
+        </section>
+
+        <!-- Charts Grid -->
+        <section class="charts-grid">
+            <div class="chart-container">
+                <h3 class="chart-title">Pre-Lease % by Unit Type</h3>
+                <div id="occupancy-bar-chart"></div>
+            </div>
+            <div class="chart-container">
+                <h3 class="chart-title">Overall Pre-Lease Composition</h3>
+                <div id="donut-chart"></div>
+            </div>
+            <div class="chart-container">
+                <h3 class="chart-title">New Lease vs Renewal by Unit Type</h3>
+                <div id="stacked-bar-chart"></div>
+            </div>
+            <div class="chart-container">
+                <h3 class="chart-title">Unit Availability Overview</h3>
+                <div id="availability-chart"></div>
+            </div>
+        </section>
+
+        <!-- Data Table -->
+        <section class="table-container">
+            <h3 class="table-title">Detailed Unit Data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Unit Type</th>
+                        <th>Total Units</th>
+                        <th>Pre-Leased</th>
+                        <th>Available</th>
+                        <th>New Leases</th>
+                        <th>Renewals</th>
+                        <th>Pre-Lease %</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in table_data %}
+                    <tr>
+                        <td>{{ row.unit_type }}</td>
+                        <td>{{ row.total_units }}</td>
+                        <td>{{ row.preleased }}</td>
+                        <td>{{ row.available }}</td>
+                        <td>{{ row.new_leases }}</td>
+                        <td>{{ row.renewals }}</td>
+                        <td class="{{ row.occupancy_class }}">{{ row.occupancy }}%</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <footer class="footer">
+            Thesis Management | Pre-Lease Report
+        </footer>
+    </div>
+
+    <!-- Plotly Charts -->
+    <script>
+        // Thesis brand color scheme
+        const colors = {
+            primary: '#2d3748',      // Dark navy
+            teal: '#5ba3a5',         // Thesis teal
+            tealLight: '#8ecfd0',    // Light teal
+            tealBg: '#d4edee',       // Teal background
+            navy: '#2d3748',         // Navy text
+            coral: '#e07a5f',        // Warm accent
+            gold: '#d4a373',         // Gold accent
+            green: '#276749',        // Success green
+            red: '#c53030',          // Warning red
+            background: '#f7f5f0',   // Cream background
+            paper: '#ffffff',        // White paper
+            grid: '#e2e8f0',         // Light grid
+            text: '#2d3748'          // Navy text
+        };
+
+        const layout = {
+            paper_bgcolor: colors.paper,
+            plot_bgcolor: colors.paper,
+            font: { color: colors.text, family: '-apple-system, BlinkMacSystemFont, sans-serif', size: 11 },
+            margin: { t: 20, r: 40, b: 80, l: 150 },
+            showlegend: false
+        };
+
+        // Horizontal Bar Chart - Pre-Lease % by Unit Type
+        const occupancyData = {{ occupancy_chart_data | safe }};
+        Plotly.newPlot('occupancy-bar-chart', [{
+            type: 'bar',
+            orientation: 'h',
+            x: occupancyData.values,
+            y: occupancyData.labels,
+            marker: {
+                color: occupancyData.values.map(v => v < 70 ? colors.red : v < 90 ? colors.gold : colors.green)
+            },
+            text: occupancyData.values.map(v => v + '%'),
+            textposition: 'inside',
+            insidetextanchor: 'end',
+            textfont: { color: '#ffffff', size: 11 }
+        }], {
+            ...layout,
+            margin: { t: 10, r: 20, b: 40, l: 180 },
+            xaxis: { range: [0, 105], gridcolor: colors.grid, zerolinecolor: colors.grid },
+            yaxis: { gridcolor: colors.grid, tickfont: { size: 11 } }
+        }, { responsive: true });
+
+        // Donut Chart - Overall Composition
+        const donutData = {{ donut_chart_data | safe }};
+        Plotly.newPlot('donut-chart', [{
+            type: 'pie',
+            hole: 0.5,
+            labels: donutData.labels,
+            values: donutData.values,
+            marker: { colors: [colors.teal, colors.tealLight, colors.coral] },
+            textinfo: 'percent',
+            textposition: 'inside',
+            textfont: { color: '#ffffff', size: 12 },
+            hoverinfo: 'label+value+percent'
+        }], {
+            ...layout,
+            margin: { t: 20, r: 20, b: 40, l: 20 },
+            showlegend: true,
+            legend: { orientation: 'h', y: -0.15, x: 0.5, xanchor: 'center', font: { color: colors.text, size: 11 } }
+        }, { responsive: true });
+
+        // Stacked Bar Chart - New vs Renewal
+        const stackedData = {{ stacked_chart_data | safe }};
+        Plotly.newPlot('stacked-bar-chart', [
+            {
+                type: 'bar',
+                name: 'New Leases',
+                x: stackedData.labels,
+                y: stackedData.new_leases,
+                marker: { color: colors.teal }
+            },
+            {
+                type: 'bar',
+                name: 'Renewals',
+                x: stackedData.labels,
+                y: stackedData.renewals,
+                marker: { color: colors.tealLight }
+            }
+        ], {
+            ...layout,
+            margin: { t: 30, r: 20, b: 120, l: 50 },
+            barmode: 'stack',
+            showlegend: true,
+            legend: { orientation: 'h', y: 1.15, x: 0.5, xanchor: 'center', font: { color: colors.text, size: 11 } },
+            xaxis: { gridcolor: colors.grid, tickangle: -45, tickfont: { size: 10 } },
+            yaxis: { gridcolor: colors.grid }
+        }, { responsive: true });
+
+        // Availability Chart
+        const availData = {{ availability_chart_data | safe }};
+        Plotly.newPlot('availability-chart', [
+            {
+                type: 'bar',
+                name: 'Pre-Leased',
+                x: availData.labels,
+                y: availData.preleased,
+                marker: { color: colors.teal }
+            },
+            {
+                type: 'bar',
+                name: 'Available',
+                x: availData.labels,
+                y: availData.available,
+                marker: { color: colors.coral }
+            }
+        ], {
+            ...layout,
+            margin: { t: 30, r: 20, b: 120, l: 50 },
+            barmode: 'group',
+            showlegend: true,
+            legend: { orientation: 'h', y: 1.15, x: 0.5, xanchor: 'center', font: { color: colors.text, size: 11 } },
+            xaxis: { gridcolor: colors.grid, tickangle: -45, tickfont: { size: 10 } },
+            yaxis: { gridcolor: colors.grid }
+        }, { responsive: true });
+    </script>
+</body>
+</html>
