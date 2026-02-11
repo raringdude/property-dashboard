@@ -14,8 +14,8 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background-color: #f7f5f0;
-            color: #2d3748;
+            background-color: #1a202c;
+            color: #e2e8f0;
             padding: 20px;
             min-height: 100vh;
         }
@@ -31,7 +31,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 20px 0;
-            border-bottom: 2px solid #d4edee;
+            border-bottom: 2px solid #2d3748;
             margin-bottom: 30px;
         }
 
@@ -44,7 +44,7 @@
         .logo-icon {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            background: linear-gradient(135deg, #5ba3a5 0%, #4a8f91 100%);
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -54,13 +54,13 @@
         .logo-icon svg {
             width: 28px;
             height: 28px;
-            fill: #8ecfd0;
+            fill: #1a202c;
         }
 
         .logo-text {
             font-size: 24px;
             font-weight: 700;
-            color: #2d3748;
+            color: #e2e8f0;
             letter-spacing: -0.5px;
         }
 
@@ -72,15 +72,51 @@
             text-align: right;
         }
 
+        .file-upload {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .upload-btn {
+            background: linear-gradient(135deg, #5ba3a5 0%, #4a8f91 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .upload-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(91, 163, 165, 0.3);
+        }
+
+        .upload-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        #csv-input {
+            display: none;
+        }
+
         .header-title h1 {
             font-size: 24px;
-            color: #2d3748;
+            color: #e2e8f0;
             margin-bottom: 5px;
             font-weight: 600;
         }
 
         .header-title .date {
-            color: #718096;
+            color: #a0aec0;
             font-size: 14px;
         }
 
@@ -93,8 +129,8 @@
         }
 
         .card {
-            background: #d4edee;
-            border: 1px solid #b8d9da;
+            background: #2d3748;
+            border: 1px solid #4a5568;
             border-radius: 12px;
             padding: 25px;
             text-align: center;
@@ -104,19 +140,19 @@
 
         .card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(91, 163, 165, 0.15);
+            box-shadow: 0 8px 25px rgba(91, 163, 165, 0.25);
         }
 
         .card-value {
             font-size: 42px;
             font-weight: 700;
             margin-bottom: 8px;
-            color: #2d3748;
+            color: #8ecfd0;
         }
 
         .card-label {
             font-size: 14px;
-            color: #4a5568;
+            color: #a0aec0;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 500;
@@ -137,40 +173,40 @@
         }
 
         .chart-container {
-            background: #ffffff;
-            border: 1px solid #d4edee;
+            background: #2d3748;
+            border: 1px solid #4a5568;
             border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             min-height: 350px;
         }
 
         .chart-title {
             font-size: 16px;
-            color: #2d3748;
+            color: #e2e8f0;
             font-weight: 600;
             margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #8ecfd0;
+            border-bottom: 2px solid #5ba3a5;
         }
 
         /* Data table */
         .table-container {
-            background: #ffffff;
-            border: 1px solid #d4edee;
+            background: #2d3748;
+            border: 1px solid #4a5568;
             border-radius: 12px;
             padding: 20px;
             overflow-x: auto;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .table-title {
             font-size: 18px;
-            color: #2d3748;
+            color: #e2e8f0;
             font-weight: 600;
             margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #8ecfd0;
+            border-bottom: 2px solid #5ba3a5;
         }
 
         table {
@@ -180,8 +216,8 @@
         }
 
         th {
-            background-color: #2d3748;
-            color: #ffffff;
+            background-color: #1a202c;
+            color: #8ecfd0;
             padding: 12px 15px;
             text-align: left;
             font-weight: 600;
@@ -200,17 +236,17 @@
 
         td {
             padding: 12px 15px;
-            border-bottom: 1px solid #e2e8f0;
-            color: #2d3748;
+            border-bottom: 1px solid #4a5568;
+            color: #e2e8f0;
         }
 
         tr:hover {
-            background-color: #f0fafa;
+            background-color: #3d4a5c;
         }
 
-        .occupancy-low { color: #c53030; font-weight: 600; }
-        .occupancy-mid { color: #b7791f; font-weight: 600; }
-        .occupancy-high { color: #276749; font-weight: 600; }
+        .occupancy-low { color: #fc8181; font-weight: 600; }
+        .occupancy-mid { color: #f6e05e; font-weight: 600; }
+        .occupancy-high { color: #68d391; font-weight: 600; }
 
         /* Footer */
         .footer {
@@ -218,14 +254,14 @@
             padding: 30px 0;
             color: #718096;
             font-size: 12px;
-            border-top: 1px solid #d4edee;
+            border-top: 1px solid #2d3748;
             margin-top: 30px;
         }
 
         /* Print styles */
         @media print {
             body {
-                background-color: #f7f5f0 !important;
+                background-color: #1a202c !important;
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
@@ -236,6 +272,10 @@
 
             .charts-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .file-upload {
+                display: none !important;
             }
         }
     </style>
@@ -253,9 +293,21 @@
                 </div>
                 <div class="logo-text">Thesis <span>Management</span></div>
             </div>
+            <div class="file-upload">
+                <input type="file" id="csv-input" accept=".csv">
+                <button class="upload-btn" onclick="document.getElementById('csv-input').click()">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+                        <polyline points="14 2 14 8 20 8" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <line x1="12" y1="18" x2="12" y2="12" stroke="currentColor" stroke-width="2"/>
+                        <polyline points="9 15 12 12 15 15" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    Load CSV
+                </button>
+            </div>
             <div class="header-title">
                 <h1>Pre-Lease Summary Report</h1>
-                <div class="date">Generated: {{ report_date }}</div>
+                <div class="date">Generated: <span id="report-date">{{ report_date }}</span></div>
             </div>
         </header>
 
@@ -337,21 +389,21 @@
 
     <!-- Plotly Charts -->
     <script>
-        // Thesis brand color scheme
+        // Thesis brand color scheme - Dark theme
         const colors = {
-            primary: '#2d3748',      // Dark navy
+            primary: '#1a202c',      // Dark background
             teal: '#5ba3a5',         // Thesis teal
             tealLight: '#8ecfd0',    // Light teal
-            tealBg: '#d4edee',       // Teal background
-            navy: '#2d3748',         // Navy text
+            tealBg: '#2d3748',       // Dark card background
+            navy: '#1a202c',         // Dark navy
             coral: '#e07a5f',        // Warm accent
-            gold: '#d4a373',         // Gold accent
-            green: '#276749',        // Success green
-            red: '#c53030',          // Warning red
-            background: '#f7f5f0',   // Cream background
-            paper: '#ffffff',        // White paper
-            grid: '#e2e8f0',         // Light grid
-            text: '#2d3748'          // Navy text
+            gold: '#f6e05e',         // Gold accent (brighter for dark)
+            green: '#68d391',        // Success green (brighter for dark)
+            red: '#fc8181',          // Warning red (brighter for dark)
+            background: '#1a202c',   // Dark background
+            paper: '#2d3748',        // Dark paper
+            grid: '#4a5568',         // Dark grid
+            text: '#e2e8f0'          // Light text
         };
 
         const layout = {
@@ -455,6 +507,228 @@
             xaxis: { gridcolor: colors.grid, tickangle: -45, tickfont: { size: 10 } },
             yaxis: { gridcolor: colors.grid }
         }, { responsive: true });
+
+        // CSV File Upload Handler
+        document.getElementById('csv-input').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const csvData = parseCSV(event.target.result);
+                if (csvData.length > 0) {
+                    updateDashboard(csvData);
+                    // Update the date to show when data was loaded
+                    const now = new Date();
+                    const dateStr = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                    document.getElementById('report-date').textContent = dateStr;
+                }
+            };
+            reader.readAsText(file);
+        });
+
+        function parseCSV(text) {
+            const lines = text.trim().split('\n');
+            if (lines.length < 2) return [];
+
+            const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
+            const data = [];
+
+            // Column mapping from CSV headers to our expected names
+            const columnMap = {
+                'Unit Type': 'unit_type',
+                'Rentable Units': 'total_units',
+                'Pre-Leased - Total': 'preleased',
+                'Pre-Leased - New Lease': 'new_leases',
+                'Pre-Leased - Renewal': 'renewals',
+                'Pre-Leased - %': 'occupancy_pct',
+                'Projected Availability': 'available'
+            };
+
+            for (let i = 1; i < lines.length; i++) {
+                const values = parseCSVLine(lines[i]);
+                if (values.length !== headers.length) continue;
+
+                const row = {};
+                headers.forEach((header, idx) => {
+                    const key = columnMap[header] || header;
+                    let value = values[idx].trim().replace(/^"|"$/g, '');
+                    // Convert numeric values
+                    if (key !== 'unit_type') {
+                        value = parseFloat(value) || 0;
+                    }
+                    row[key] = value;
+                });
+
+                // Skip rows with 0 total units
+                if (row.total_units > 0) {
+                    data.push(row);
+                }
+            }
+
+            return data;
+        }
+
+        function parseCSVLine(line) {
+            const result = [];
+            let current = '';
+            let inQuotes = false;
+
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    result.push(current);
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            result.push(current);
+            return result;
+        }
+
+        function updateDashboard(data) {
+            // Calculate metrics
+            let totalUnits = 0, totalPreleased = 0, totalAvailable = 0;
+            let totalNewLeases = 0, totalRenewals = 0;
+
+            data.forEach(row => {
+                totalUnits += row.total_units;
+                totalPreleased += row.preleased;
+                totalAvailable += row.available;
+                totalNewLeases += row.new_leases;
+                totalRenewals += row.renewals;
+            });
+
+            const overallOccupancy = totalUnits > 0 ? ((totalPreleased / totalUnits) * 100).toFixed(1) : 0;
+
+            // Update summary cards
+            document.querySelectorAll('.card-value')[0].textContent = totalUnits;
+            document.querySelectorAll('.card-value')[1].textContent = overallOccupancy + '%';
+            document.querySelectorAll('.card-value')[2].textContent = totalAvailable;
+            document.querySelectorAll('.card-value')[3].textContent = totalPreleased;
+
+            // Calculate occupancy percentages
+            data.forEach(row => {
+                if (row.occupancy_pct <= 1) {
+                    row.occupancy_pct = (row.occupancy_pct * 100);
+                }
+                if (!row.occupancy_pct || row.occupancy_pct === 0) {
+                    row.occupancy_pct = row.total_units > 0 ? ((row.preleased / row.total_units) * 100) : 0;
+                }
+                row.occupancy_pct = parseFloat(row.occupancy_pct.toFixed(1));
+            });
+
+            // Sort data for occupancy chart
+            const sortedData = [...data].sort((a, b) => a.occupancy_pct - b.occupancy_pct);
+
+            // Update Occupancy Bar Chart
+            Plotly.react('occupancy-bar-chart', [{
+                type: 'bar',
+                orientation: 'h',
+                x: sortedData.map(d => d.occupancy_pct),
+                y: sortedData.map(d => d.unit_type),
+                marker: {
+                    color: sortedData.map(d => d.occupancy_pct < 70 ? colors.red : d.occupancy_pct < 90 ? colors.gold : colors.green)
+                },
+                text: sortedData.map(d => d.occupancy_pct + '%'),
+                textposition: 'inside',
+                insidetextanchor: 'end',
+                textfont: { color: '#ffffff', size: 11 }
+            }], {
+                ...layout,
+                margin: { t: 10, r: 20, b: 40, l: 180 },
+                xaxis: { range: [0, 105], gridcolor: colors.grid, zerolinecolor: colors.grid },
+                yaxis: { gridcolor: colors.grid, tickfont: { size: 11 } }
+            });
+
+            // Update Donut Chart
+            Plotly.react('donut-chart', [{
+                type: 'pie',
+                hole: 0.5,
+                labels: ['New Leases', 'Renewals', 'Available'],
+                values: [totalNewLeases, totalRenewals, totalAvailable],
+                marker: { colors: [colors.teal, colors.tealLight, colors.coral] },
+                textinfo: 'percent',
+                textposition: 'inside',
+                textfont: { color: '#ffffff', size: 12 },
+                hoverinfo: 'label+value+percent'
+            }], {
+                ...layout,
+                margin: { t: 20, r: 20, b: 40, l: 20 },
+                showlegend: true,
+                legend: { orientation: 'h', y: -0.15, x: 0.5, xanchor: 'center', font: { color: colors.text, size: 11 } }
+            });
+
+            // Update Stacked Bar Chart
+            Plotly.react('stacked-bar-chart', [
+                {
+                    type: 'bar',
+                    name: 'New Leases',
+                    x: data.map(d => d.unit_type),
+                    y: data.map(d => d.new_leases),
+                    marker: { color: colors.teal }
+                },
+                {
+                    type: 'bar',
+                    name: 'Renewals',
+                    x: data.map(d => d.unit_type),
+                    y: data.map(d => d.renewals),
+                    marker: { color: colors.tealLight }
+                }
+            ], {
+                ...layout,
+                margin: { t: 30, r: 20, b: 120, l: 50 },
+                barmode: 'stack',
+                showlegend: true,
+                legend: { orientation: 'h', y: 1.15, x: 0.5, xanchor: 'center', font: { color: colors.text, size: 11 } },
+                xaxis: { gridcolor: colors.grid, tickangle: -45, tickfont: { size: 10 } },
+                yaxis: { gridcolor: colors.grid }
+            });
+
+            // Update Availability Chart
+            Plotly.react('availability-chart', [
+                {
+                    type: 'bar',
+                    name: 'Pre-Leased',
+                    x: data.map(d => d.unit_type),
+                    y: data.map(d => d.preleased),
+                    marker: { color: colors.teal }
+                },
+                {
+                    type: 'bar',
+                    name: 'Available',
+                    x: data.map(d => d.unit_type),
+                    y: data.map(d => d.available),
+                    marker: { color: colors.coral }
+                }
+            ], {
+                ...layout,
+                margin: { t: 30, r: 20, b: 120, l: 50 },
+                barmode: 'group',
+                showlegend: true,
+                legend: { orientation: 'h', y: 1.15, x: 0.5, xanchor: 'center', font: { color: colors.text, size: 11 } },
+                xaxis: { gridcolor: colors.grid, tickangle: -45, tickfont: { size: 10 } },
+                yaxis: { gridcolor: colors.grid }
+            });
+
+            // Update Table
+            const tbody = document.querySelector('table tbody');
+            tbody.innerHTML = data.map(row => {
+                const occClass = row.occupancy_pct < 70 ? 'occupancy-low' : row.occupancy_pct < 90 ? 'occupancy-mid' : 'occupancy-high';
+                return `<tr>
+                    <td>${row.unit_type}</td>
+                    <td>${row.total_units}</td>
+                    <td>${row.preleased}</td>
+                    <td>${row.available}</td>
+                    <td>${row.new_leases}</td>
+                    <td>${row.renewals}</td>
+                    <td class="${occClass}">${row.occupancy_pct}%</td>
+                </tr>`;
+            }).join('');
+        }
     </script>
 </body>
 </html>

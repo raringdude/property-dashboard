@@ -14,8 +14,8 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background-color: #f7f5f0;
-            color: #2d3748;
+            background-color: #1a202c;
+            color: #e2e8f0;
             padding: 20px;
             min-height: 100vh;
         }
@@ -31,7 +31,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 20px 0;
-            border-bottom: 2px solid #d4edee;
+            border-bottom: 2px solid #2d3748;
             margin-bottom: 30px;
         }
 
@@ -44,7 +44,7 @@
         .logo-icon {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            background: linear-gradient(135deg, #5ba3a5 0%, #4a8f91 100%);
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -54,13 +54,13 @@
         .logo-icon svg {
             width: 28px;
             height: 28px;
-            fill: #8ecfd0;
+            fill: #1a202c;
         }
 
         .logo-text {
             font-size: 24px;
             font-weight: 700;
-            color: #2d3748;
+            color: #e2e8f0;
             letter-spacing: -0.5px;
         }
 
@@ -110,13 +110,13 @@
 
         .header-title h1 {
             font-size: 24px;
-            color: #2d3748;
+            color: #e2e8f0;
             margin-bottom: 5px;
             font-weight: 600;
         }
 
         .header-title .date {
-            color: #718096;
+            color: #a0aec0;
             font-size: 14px;
         }
 
@@ -129,8 +129,8 @@
         }
 
         .card {
-            background: #d4edee;
-            border: 1px solid #b8d9da;
+            background: #2d3748;
+            border: 1px solid #4a5568;
             border-radius: 12px;
             padding: 25px;
             text-align: center;
@@ -140,19 +140,19 @@
 
         .card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(91, 163, 165, 0.15);
+            box-shadow: 0 8px 25px rgba(91, 163, 165, 0.25);
         }
 
         .card-value {
             font-size: 42px;
             font-weight: 700;
             margin-bottom: 8px;
-            color: #2d3748;
+            color: #8ecfd0;
         }
 
         .card-label {
             font-size: 14px;
-            color: #4a5568;
+            color: #a0aec0;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 500;
@@ -173,40 +173,40 @@
         }
 
         .chart-container {
-            background: #ffffff;
-            border: 1px solid #d4edee;
+            background: #2d3748;
+            border: 1px solid #4a5568;
             border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             min-height: 350px;
         }
 
         .chart-title {
             font-size: 16px;
-            color: #2d3748;
+            color: #e2e8f0;
             font-weight: 600;
             margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #8ecfd0;
+            border-bottom: 2px solid #5ba3a5;
         }
 
         /* Data table */
         .table-container {
-            background: #ffffff;
-            border: 1px solid #d4edee;
+            background: #2d3748;
+            border: 1px solid #4a5568;
             border-radius: 12px;
             padding: 20px;
             overflow-x: auto;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .table-title {
             font-size: 18px;
-            color: #2d3748;
+            color: #e2e8f0;
             font-weight: 600;
             margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #8ecfd0;
+            border-bottom: 2px solid #5ba3a5;
         }
 
         table {
@@ -216,8 +216,8 @@
         }
 
         th {
-            background-color: #2d3748;
-            color: #ffffff;
+            background-color: #1a202c;
+            color: #8ecfd0;
             padding: 12px 15px;
             text-align: left;
             font-weight: 600;
@@ -236,17 +236,17 @@
 
         td {
             padding: 12px 15px;
-            border-bottom: 1px solid #e2e8f0;
-            color: #2d3748;
+            border-bottom: 1px solid #4a5568;
+            color: #e2e8f0;
         }
 
         tr:hover {
-            background-color: #f0fafa;
+            background-color: #3d4a5c;
         }
 
-        .occupancy-low { color: #c53030; font-weight: 600; }
-        .occupancy-mid { color: #b7791f; font-weight: 600; }
-        .occupancy-high { color: #276749; font-weight: 600; }
+        .occupancy-low { color: #fc8181; font-weight: 600; }
+        .occupancy-mid { color: #f6e05e; font-weight: 600; }
+        .occupancy-high { color: #68d391; font-weight: 600; }
 
         /* Footer */
         .footer {
@@ -254,14 +254,14 @@
             padding: 30px 0;
             color: #718096;
             font-size: 12px;
-            border-top: 1px solid #d4edee;
+            border-top: 1px solid #2d3748;
             margin-top: 30px;
         }
 
         /* Print styles */
         @media print {
             body {
-                background-color: #f7f5f0 !important;
+                background-color: #1a202c !important;
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
@@ -439,21 +439,21 @@
 
     <!-- Plotly Charts -->
     <script>
-        // Thesis brand color scheme
+        // Thesis brand color scheme - Dark theme
         const colors = {
-            primary: '#2d3748',      // Dark navy
+            primary: '#1a202c',      // Dark background
             teal: '#5ba3a5',         // Thesis teal
             tealLight: '#8ecfd0',    // Light teal
-            tealBg: '#d4edee',       // Teal background
-            navy: '#2d3748',         // Navy text
+            tealBg: '#2d3748',       // Dark card background
+            navy: '#1a202c',         // Dark navy
             coral: '#e07a5f',        // Warm accent
-            gold: '#d4a373',         // Gold accent
-            green: '#276749',        // Success green
-            red: '#c53030',          // Warning red
-            background: '#f7f5f0',   // Cream background
-            paper: '#ffffff',        // White paper
-            grid: '#e2e8f0',         // Light grid
-            text: '#2d3748'          // Navy text
+            gold: '#f6e05e',         // Gold accent (brighter for dark)
+            green: '#68d391',        // Success green (brighter for dark)
+            red: '#fc8181',          // Warning red (brighter for dark)
+            background: '#1a202c',   // Dark background
+            paper: '#2d3748',        // Dark paper
+            grid: '#4a5568',         // Dark grid
+            text: '#e2e8f0'          // Light text
         };
 
         const layout = {
