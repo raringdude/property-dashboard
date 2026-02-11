@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pre-Lease Property Report</title>
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -78,7 +79,7 @@
             gap: 12px;
         }
 
-        .upload-btn {
+        .header-btn {
             background: linear-gradient(135deg, #5ba3a5 0%, #4a8f91 100%);
             color: white;
             border: none;
@@ -93,15 +94,23 @@
             gap: 8px;
         }
 
-        .upload-btn:hover {
+        .header-btn:hover {
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(91, 163, 165, 0.3);
         }
 
-        .upload-btn svg {
+        .header-btn svg {
             width: 18px;
             height: 18px;
             fill: currentColor;
+        }
+
+        .header-btn.export-btn {
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+        }
+
+        .header-btn.export-btn:hover {
+            box-shadow: 0 4px 12px rgba(74, 85, 104, 0.4);
         }
 
         #csv-input {
@@ -295,7 +304,7 @@
             </div>
             <div class="file-upload">
                 <input type="file" id="csv-input" accept=".csv">
-                <button class="upload-btn" onclick="document.getElementById('csv-input').click()">
+                <button class="header-btn" onclick="document.getElementById('csv-input').click()">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
                         <polyline points="14 2 14 8 20 8" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -303,6 +312,15 @@
                         <polyline points="9 15 12 12 15 15" fill="none" stroke="currentColor" stroke-width="2"/>
                     </svg>
                     Load CSV
+                </button>
+                <button class="header-btn export-btn" onclick="exportToPDF()">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+                        <polyline points="14 2 14 8 20 8" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <line x1="12" y1="12" x2="12" y2="18" stroke="currentColor" stroke-width="2"/>
+                        <polyline points="9 15 12 18 15 15" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    Export PDF
                 </button>
             </div>
             <div class="header-title">
@@ -778,6 +796,38 @@
                     <td class="${occClass}">${row.occupancy_pct}%</td>
                 </tr>`;
             }).join('');
+        }
+
+        // Export to PDF function
+        function exportToPDF() {
+            const element = document.querySelector('.container');
+            const buttons = document.querySelector('.file-upload');
+
+            // Hide buttons during export
+            buttons.style.display = 'none';
+
+            const opt = {
+                margin: [10, 10, 10, 10],
+                filename: 'Pre-Lease-Report-' + new Date().toISOString().split('T')[0] + '.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: {
+                    scale: 2,
+                    useCORS: true,
+                    backgroundColor: '#1a202c',
+                    logging: false
+                },
+                jsPDF: {
+                    unit: 'mm',
+                    format: 'a4',
+                    orientation: 'landscape'
+                },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Show buttons again after export
+                buttons.style.display = 'flex';
+            });
         }
     </script>
 </body>
